@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control Tower — Reports Index</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+  <style>
+    :root {
+      --bg: #090b10;
+      --text: #f4f7ff;
+      --muted: #a6b0c5;
+      --line: rgba(255,255,255,.11);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 26px;
+      min-height: 100vh;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 600px at -10% -10%, rgba(122,141,255,.22), transparent 45%),
+        radial-gradient(850px 500px at 110% -20%, rgba(86,211,255,.17), transparent 48%),
+        var(--bg);
+      color: var(--text);
+    }
+    .shell { max-width: 1200px; margin: 0 auto; }
+    .hero { margin-bottom: 18px; }
+    h1 { margin: 0; font-size: clamp(1.5rem, 2.4vw, 2.1rem); letter-spacing: -0.02em; }
+    .sub { margin-top: 8px; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-top: 16px; }
+
+    .card {
+      --topic: #7a8dff;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--topic);
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      backdrop-filter: blur(2px);
+      transition: transform .14s ease, border-color .14s ease, box-shadow .14s ease;
+    }
+    .card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--topic) 65%, white 10%); box-shadow: 0 10px 25px rgba(0,0,0,.28); }
+
+    .topic-enel { --topic: #47d16a; }
+    .topic-moto { --topic: #5aa8ff; }
+    .topic-paypal { --topic: #3d8bff; }
+    .topic-trip { --topic: #ffb347; }
+    .topic-report { --topic: #b58cff; }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .topic {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--topic) 22%, transparent);
+      border: 1px solid color-mix(in srgb, var(--topic) 56%, white 8%);
+      color: #eef2ff;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .updated { color: var(--muted); font-size: .74rem; }
+    .card h3 { margin: 10px 0 8px; font-size: 1.03rem; line-height: 1.3; letter-spacing: -0.01em; }
+    .card p { margin: 0 0 11px; color: #c6d0e6; min-height: 2.7em; font-size: .92rem; }
+    .metrics { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 11px; }
+    .metric {
+      font-size: .76rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.04);
+      color: #e8ecff;
+      white-space: nowrap;
+    }
+    .open { font-size: .88rem; font-weight: 600; color: #d7ddff; }
+    .muted { color: var(--muted); }
+    code { background: rgba(255,255,255,.12); padding: 0 .35rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <h1>Control Tower</h1>
+      <div class="sub">All generated reports in one place • Updated 2026-08-22 12:34</div>
+    </section>
+    <section class="grid">
+      <a class="card topic-trip" href="./skiathos-trip.html">
+        <div class="card-top">
+          <span class="topic topic-trip">Trip</span>
+          <span class="updated">Updated: 2026-08-22 12:34</span>
+        </div>
+        <h3>Skiathos &amp; Skopelos · Settembre 2026</h3>
+        <p>Skiathos &amp; Skopelos</p>
+        <div class="metrics"><span class="metric">Skiathos + Skopelos</span><span class="metric">Family plan ready</span></div>
+        <div class="open">Open full page →</div>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
