@@ -79,22 +79,13 @@ nav {
   background: var(--white);
   border-bottom: 1px solid var(--border);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0;
   position: sticky; top: 0; z-index: 100;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  white-space: nowrap;
 }
-nav::-webkit-scrollbar { display: none; }
 nav a {
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-  min-height: 44px;
-  padding: 12px 14px;
+  display: block;
+  padding: 14px 16px;
   font-size: 0.66em;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -105,6 +96,28 @@ nav a {
 }
 nav a:first-child { border-left: 1px solid var(--border); }
 nav a:hover { background: var(--ivory); color: var(--terra); }
+
+/* mobile jump menu (new approach) */
+.mobile-jump {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 10px;
+}
+.mobile-jump select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 0.84em;
+  letter-spacing: 0.3px;
+  padding: 8px 10px;
+  border-radius: 2px;
+}
 
 /* ── CONTAINER ── */
 .container { max-width: 960px; margin: 0 auto; padding: 70px 24px 80px; }
@@ -249,13 +262,10 @@ footer span { color: var(--terra); }
 @media(max-width:680px){
   .site-header h1 { font-size: 2.1em; }
   .site-header .sub { font-size: 0.78em; line-height: 1.5; }
-  nav { top: 0; }
-  nav a {
-    min-height: 40px;
-    padding: 10px 10px;
-    font-size: 0.60em;
-    letter-spacing: 0.7px;
-  }
+
+  nav { display: none; }
+  .mobile-jump { display: block; }
+
   .container { padding: 40px 14px 56px; }
   .cover { height: 220px; }
   .cover-title { font-size: 1.6em; }
@@ -265,11 +275,11 @@ footer span { color: var(--terra); }
 }
 
 @media(max-width:420px){
-  nav a {
+  .mobile-jump { padding: 7px 8px; }
+  .mobile-jump select {
     min-height: 36px;
-    padding: 8px 9px;
-    font-size: 0.55em;
-    letter-spacing: 0.5px;
+    font-size: 0.78em;
+    padding: 7px 9px;
   }
 }
 </style>
@@ -344,6 +354,18 @@ footer span { color: var(--terra); }
   <a href="#p5">V · Grand Tour</a>
   <a href="#costi" style="background:#fff3e8;color:#8B4A2B;font-weight:700;">💶 Costi</a>
 </nav>
+
+<div class="mobile-jump" aria-label="Vai a una sezione">
+  <select id="mobileSectionJump">
+    <option value="">Vai a…</option>
+    <option value="#p1">I · Esploratori</option>
+    <option value="#p2">II · Capitano</option>
+    <option value="#p3">III · Mamma Mia</option>
+    <option value="#p4">IV · Gourmet</option>
+    <option value="#p5">V · Grand Tour</option>
+    <option value="#costi">💶 Costi</option>
+  </select>
+</div>
 
 <div class="container">
 
@@ -947,6 +969,24 @@ footer span { color: var(--terra); }
   </div>
 </div>
 <!-- ===== FINE SEZIONE COSTI ===== -->
+
+<script>
+(function () {
+  var sel = document.getElementById('mobileSectionJump');
+  if (!sel) return;
+  sel.addEventListener('change', function () {
+    var v = sel.value;
+    if (!v) return;
+    var target = document.querySelector(v);
+    if (target && typeof target.scrollIntoView === 'function') {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function(){ sel.selectedIndex = 0; }, 250);
+    } else {
+      window.location.hash = v;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
