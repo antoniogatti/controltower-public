@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Garmin Dashboard</title>
+  <meta name="ct-title" content="Garmin Dashboard" />
+  <meta name="ct-summary" content="Daily Garmin steps, sleep, body battery, and activities. Open the live public dashboard below or in a new tab." />
+  <meta name="ct-metrics" content="Daily refresh; Steps; Sleep; Body Battery; Activities" />
+  <style>
+    :root { color-scheme: dark; }
+    html, body { margin: 0; padding: 0; min-height: 100%; background: #0a0d14; color: #f4f7ff; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { padding: 16px; }
+    .shell { max-width: 1200px; margin: 0 auto; }
+    .hero {
+      display: grid; gap: 12px;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+    .card {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      backdrop-filter: blur(10px);
+      padding: 16px;
+    }
+    .eyebrow { display:inline-flex; padding: 6px 10px; border-radius: 999px; background: rgba(86,211,255,.12); border: 1px solid rgba(86,211,255,.28); color: #dff7ff; font-size: 12px; font-weight: 700; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin: 10px 0 8px; font-size: clamp(1.8rem, 2.7vw, 3rem); line-height: 1.03; }
+    p { margin: 0; color: #b7c2df; line-height: 1.55; }
+    .actions { display:flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding: 11px 14px; border-radius: 14px; text-decoration:none; color:#f4f7ff; font-weight:700; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05); }
+    .btn.primary { background: linear-gradient(135deg, #7c3aed, #4f46e5); border-color: transparent; }
+    .stats { display:grid; gap: 10px; }
+    .stat { border:1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 14px; background: rgba(255,255,255,.04); }
+    .stat .k { color:#a8b2c8; font-size: 12px; text-transform: uppercase; letter-spacing:.08em; }
+    .stat .v { margin-top: 6px; font-size: 28px; font-weight: 800; }
+    .stat .s { margin-top: 4px; color:#b7c2df; font-size: 12px; }
+    .frame { width: 100%; min-height: 74vh; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; overflow: hidden; background: #fff; }
+    iframe { width: 100%; height: 74vh; border: 0; background: #fff; display:block; }
+    .note { margin-top: 10px; color:#a8b2c8; font-size: 12px; }
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; }
+      iframe, .frame { min-height: 68vh; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="card">
+        <div class="eyebrow">Garmin inside Control Tower</div>
+        <h1>Garmin Dashboard</h1>
+        <p>Live public dashboard for steps, sleep, body battery and activities. This page keeps the Garmin view inside the Control Tower hub and also exposes the public site directly.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://antoniogatti.github.io/garmin-dashboard/" target="_blank" rel="noreferrer">Open public Garmin page</a>
+          <a class="btn" href="https://github.com/antoniogatti/garmin-dashboard" target="_blank" rel="noreferrer">GitHub repo</a>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="k">Refresh</div>
+          <div class="v">Daily</div>
+          <div class="s">Updated by the Garmin MCP refresh job every morning.</div>
+        </div>
+        <div class="stat">
+          <div class="k">Focus</div>
+          <div class="v">Steps · Sleep</div>
+          <div class="s">Plus body battery, activity mix, and a full activity table.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="frame">
+      <iframe src="https://antoniogatti.github.io/garmin-dashboard/" title="Garmin Dashboard"></iframe>
+    </div>
+    <div class="note">If the embed is blocked by the browser, use the open button above.</div>
+  </main>
+</body>
+</html>
