@@ -97,7 +97,7 @@ nav a {
 nav a:first-child { border-left: 1px solid var(--border); }
 nav a:hover { background: var(--ivory); color: var(--terra); }
 
-/* mobile jump menu (new approach) */
+/* mobile jump menu (reliable anchor navigation) */
 .mobile-jump {
   display: none;
   position: sticky;
@@ -112,9 +112,9 @@ nav a:hover { background: var(--ivory); color: var(--terra); }
   min-height: 40px;
   border: 1px solid var(--border);
   background: #fff;
-  color: var(--text);
+  color: #2C2418;
   font-size: 0.84em;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   padding: 8px 10px;
   border-radius: 2px;
 }
@@ -259,12 +259,14 @@ footer {
 }
 footer span { color: var(--terra); }
 
+@media(max-width:980px){
+  nav { display: none; }
+  .mobile-jump { display: block; }
+}
+
 @media(max-width:680px){
   .site-header h1 { font-size: 2.1em; }
   .site-header .sub { font-size: 0.78em; line-height: 1.5; }
-
-  nav { display: none; }
-  .mobile-jump { display: block; }
 
   .container { padding: 40px 14px 56px; }
   .cover { height: 220px; }
@@ -356,14 +358,14 @@ footer span { color: var(--terra); }
 </nav>
 
 <div class="mobile-jump" aria-label="Vai a una sezione">
-  <select id="mobileSectionJump">
+  <select id="mobileSectionJump" onchange="if(this.value){window.location.hash=this.value; this.selectedIndex=0;}">
     <option value="">Vai a…</option>
-    <option value="#p1">I · Esploratori</option>
-    <option value="#p2">II · Capitano</option>
-    <option value="#p3">III · Mamma Mia</option>
-    <option value="#p4">IV · Gourmet</option>
-    <option value="#p5">V · Grand Tour</option>
-    <option value="#costi">💶 Costi</option>
+    <option value="p1">I · Esploratori</option>
+    <option value="p2">II · Capitano</option>
+    <option value="p3">III · Mamma Mia</option>
+    <option value="p4">IV · Gourmet</option>
+    <option value="p5">V · Grand Tour</option>
+    <option value="costi">💶 Costi</option>
   </select>
 </div>
 
@@ -969,24 +971,6 @@ footer span { color: var(--terra); }
   </div>
 </div>
 <!-- ===== FINE SEZIONE COSTI ===== -->
-
-<script>
-(function () {
-  var sel = document.getElementById('mobileSectionJump');
-  if (!sel) return;
-  sel.addEventListener('change', function () {
-    var v = sel.value;
-    if (!v) return;
-    var target = document.querySelector(v);
-    if (target && typeof target.scrollIntoView === 'function') {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(function(){ sel.selectedIndex = 0; }, 250);
-    } else {
-      window.location.hash = v;
-    }
-  });
-})();
-</script>
 
 </body>
 </html>
