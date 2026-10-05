@@ -65,7 +65,7 @@
       letter-spacing: .02em;
     }
     .subtitle {
-      max-width: 820px;
+      max-width: 900px;
       color: var(--muted);
       font-size: 1.02rem;
       line-height: 1.7;
@@ -169,15 +169,18 @@
       color: #f4f7ff;
     }
     .panel .body { padding: 18px 20px 20px; }
-    .timeline { display: grid; gap: 14px; }
-    .step {
+    .timeline, .cards { display: grid; gap: 14px; }
+    .step, .idea, .hotel, .source {
       display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 14px;
+      gap: 12px;
       padding: 16px;
       border: 1px solid var(--line);
       border-radius: 18px;
       background: rgba(255,255,255,.03);
+    }
+    .step {
+      grid-template-columns: 88px 1fr;
+      gap: 14px;
     }
     .step .when {
       font-size: .76rem;
@@ -186,8 +189,8 @@
       color: var(--accent);
       padding-top: 3px;
     }
-    .step h3 { margin: 0 0 6px; font-size: 1.02rem; }
-    .step p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .step h3, .idea h3, .hotel h3, .source h3 { margin: 0 0 6px; font-size: 1.02rem; }
+    .step p, .idea p, .hotel p, .source p { margin: 0; color: var(--muted); line-height: 1.65; }
     .inline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .tag {
       font-size: .76rem;
@@ -234,7 +237,11 @@
       color: #f4f7ff;
       border-color: var(--line);
     }
-    .list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .list {
+      display: grid; gap: 10px;
+      margin: 0; padding: 0;
+      list-style: none;
+    }
     .list li {
       padding: 12px 13px;
       border: 1px solid var(--line);
@@ -243,6 +250,44 @@
       color: #e7ebf8;
       line-height: 1.5;
     }
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #dff2ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .source-link:hover { text-decoration: underline; }
+    .soft-note {
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent-2);
+      background: rgba(93,214,255,.08);
+      border-radius: 12px;
+      color: #e8f6ff;
+      line-height: 1.55;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      font-size: .76rem;
+      color: #eef2ff;
+    }
+    .hotel .price {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff2dc;
+    }
+    .hotel .price small { color: var(--muted); font-weight: 500; }
     .footer {
       margin-top: 16px;
       padding: 18px 4px 4px;
@@ -251,7 +296,9 @@
       text-align: center;
     }
     .footer a { color: #dff2ff; }
-    @media (max-width: 900px) {
+    .sources-list { display: grid; gap: 10px; }
+    .source h3 { font-size: .98rem; }
+    @media (max-width: 980px) {
       .hero-grid, .grid { grid-template-columns: 1fr; }
       .hero-visual { border-right: 0; border-bottom: 1px solid var(--line); min-height: 180px; }
     }
@@ -270,7 +317,7 @@
       <div class="hero-top">
         <div class="eyebrow">Abu Dhabi trip</div>
         <h1>Abu Dhabi</h1>
-        <p class="subtitle">Turkish Airlines trip from Bari to Abu Dhabi with a complimentary Istanbul hotel stay included in the ticket. Everything is grouped here so you can open it quickly from mobile or desktop.</p>
+        <p class="subtitle">Turkish Airlines trip from Bari to Abu Dhabi with a complimentary Istanbul hotel stay included in the ticket. I added three trip directions and a value hotel shortlist so you can review and refine the plan quickly.</p>
         <div class="chips">
           <span class="chip"><strong>Booking</strong> VWRH8U</span>
           <span class="chip"><strong>Passengers</strong> Lucia, Antonio, Elio</span>
@@ -290,6 +337,151 @@
     </section>
 
     <section class="grid">
+      <article class="panel">
+        <h2>Trip directions</h2>
+        <div class="body cards">
+          <div class="idea">
+            <div class="badge-row">
+              <span class="badge">Best if Abu Dhabi is the base</span>
+              <span class="badge">Lower transfer stress</span>
+            </div>
+            <h3>Option 1 — Abu Dhabi base + desert + Louvre + Yas Island</h3>
+            <p>Use Abu Dhabi as the main base. One desert evening or night safari, one Louvre Abu Dhabi day, and one Yas Island family day is the cleanest plan. Yas Island is about 30 minutes from the city centre and around 15 minutes from the airport, so it stays easy with a child.</p>
+            <div class="inline-tags">
+              <span class="tag">Desert safari</span>
+              <span class="tag">Louvre Abu Dhabi</span>
+              <span class="tag">Family activities</span>
+              <span class="tag">Short transfers</span>
+            </div>
+            <a class="source-link" href="https://visitabudhabi.ae/en/things-to-do/adventure/desert/desert-safari" target="_blank" rel="noopener noreferrer">Desert safari source →</a>
+            <a class="source-link" href="https://www.louvreabudhabi.ae/en/programmes/children-and-families" target="_blank" rel="noopener noreferrer">Louvre Abu Dhabi families →</a>
+            <a class="source-link" href="https://visitabudhabi.ae/en/where-to-go/islands/yas-lsland" target="_blank" rel="noopener noreferrer">Yas Island overview →</a>
+          </div>
+
+          <div class="idea">
+            <div class="badge-row">
+              <span class="badge">Best if you want Dubai too</span>
+              <span class="badge">Car is more practical</span>
+            </div>
+            <h3>Option 2 — Abu Dhabi + 3 days in Dubai</h3>
+            <p>Do a 3-day Dubai side trip after the Abu Dhabi days. Car rental is the most practical option if you want flexibility with luggage, stops, and timings; public transport is cheaper but much slower. A simple split: Downtown, Old Dubai, then beach/mall/family time.</p>
+            <div class="inline-tags">
+              <span class="tag">Downtown Dubai</span>
+              <span class="tag">Old Dubai</span>
+              <span class="tag">Rental car</span>
+              <span class="tag">~1h15m drive</span>
+            </div>
+            <a class="source-link" href="https://www.rome2rio.com/s/Abu-Dhabi/Dubai" target="_blank" rel="noopener noreferrer">Travel time reference →</a>
+            <a class="source-link" href="https://www.visitdubai.com/en/plan-your-trip/getting-around-dubai/taxi-and-car-rentals" target="_blank" rel="noopener noreferrer">Dubai car rentals →</a>
+            <a class="source-link" href="https://www.visitdubai.com/en/articles/unforgettable-family-holiday-in-dubai" target="_blank" rel="noopener noreferrer">Family trip ideas in Dubai →</a>
+          </div>
+
+          <div class="idea">
+            <div class="badge-row">
+              <span class="badge">Best if Elio’s pace comes first</span>
+              <span class="badge">Mostly indoor + easy days</span>
+            </div>
+            <h3>Option 3 — Elio-first family plan</h3>
+            <p>Keep it slower: Louvre Abu Dhabi’s children/family programmes, KidZania or Children’s City if you do Dubai, plus one mangrove or beach morning and one desert evening. This version avoids stacking too many big-ticket days back-to-back and leaves room for rest.</p>
+            <div class="inline-tags">
+              <span class="tag">Kid-friendly</span>
+              <span class="tag">Indoor backups</span>
+              <span class="tag">Mangroves / beach</span>
+              <span class="tag">Desert night</span>
+            </div>
+            <a class="source-link" href="https://visitabudhabi.ae/en/things-to-do/families" target="_blank" rel="noopener noreferrer">Abu Dhabi family activities →</a>
+            <a class="source-link" href="https://www.visitdubai.com/en/places-to-visit/kidzania" target="_blank" rel="noopener noreferrer">KidZania →</a>
+            <a class="source-link" href="https://www.visitdubai.com/en/places-to-visit/childrens-city" target="_blank" rel="noopener noreferrer">Children’s City →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h2>Hotel shortlist</h2>
+        <div class="body hotel-box">
+          <div class="soft-note">Best live value signal found: several solid 4-star Abu Dhabi stays are showing prices in the low-$50s/night on Booking. Exact totals can move by date, so I kept this as a shortlist rather than a lock-in.</div>
+
+          <div class="hotel">
+            <h3>Grand Villaggio Hotel Abu Dhabi</h3>
+            <div class="price">From $48.52/night <small>— 4-star, 8.3/10</small></div>
+            <p>Cheapest visible 4-star option; good basic value with pool and parking.</p>
+            <a class="source-link" href="https://www.booking.com/hotel/ae/grand-villaggio.html" target="_blank" rel="noopener noreferrer">Booking page →</a>
+          </div>
+
+          <div class="hotel">
+            <h3>TRYP by Wyndham Abu Dhabi City Center</h3>
+            <div class="price">From $53.91/night <small>— 4-star, 8.2/10</small></div>
+            <p>Strong discount signal and central location; good if you want a practical city base.</p>
+            <a class="source-link" href="https://www.booking.com/hotel/ae/tryp-by-wyndham-abu-dhabi.html" target="_blank" rel="noopener noreferrer">Booking page →</a>
+          </div>
+
+          <div class="hotel">
+            <h3>La Quinta by Wyndham Abu Dhabi Al Wahda</h3>
+            <div class="price">From $56.78/night <small>— 4-star, 8.8/10</small></div>
+            <p>Very practical for families: near Al Wahda Mall, with parking and indoor pool.</p>
+            <a class="source-link" href="https://www.booking.com/hotel/ae/la-quinta-by-wyndham-abu-dhabi-al-wahda.html" target="_blank" rel="noopener noreferrer">Booking page →</a>
+          </div>
+
+          <div class="hotel">
+            <h3>Southern Sun Abu Dhabi</h3>
+            <div class="price">Avg. $73.64/night <small>— 4-star, 8.5/10</small></div>
+            <p>Best all-round family-friendly value if you want more amenities and a larger review base.</p>
+            <a class="source-link" href="https://www.booking.com/hotel/ae/southern-sun-abu-dhabi.html" target="_blank" rel="noopener noreferrer">Booking page →</a>
+          </div>
+
+          <div class="hotel">
+            <h3>Oryx Hotel</h3>
+            <div class="price">About £55.26/night <small>— 4-star, 8.2/10</small></div>
+            <p>Nice beach-adjacent value choice if you want Corniche access without luxury pricing.</p>
+            <a class="source-link" href="https://www.booking.com/hotel/ae/oryx.html" target="_blank" rel="noopener noreferrer">Booking page →</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid" style="margin-top:16px;">
+      <article class="panel">
+        <h2>What to do with Elio</h2>
+        <div class="body notes-box">
+          <ul class="list">
+            <li>Louvre Abu Dhabi Children’s Museum and family programmes.</li>
+            <li>Yas Island day: theme park / water park / indoor fun depending on mood.</li>
+            <li>KidZania if you do Dubai; Children’s City as another easy indoor backup.</li>
+            <li>One desert evening to keep the trip memorable without overloading the schedule.</li>
+            <li>Beach or mangrove morning for a calmer half-day.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="panel">
+        <h2>Quick links</h2>
+        <div class="body">
+          <div class="actions">
+            <a class="btn btn-primary" href="./index.html">Back to index</a>
+            <a class="btn btn-secondary" href="mailto:?subject=Abu%20Dhabi%20trip&body=Open%20the%20page%3A%20https%3A%2F%2Fantoniogatti.github.io%2Fcontroltower-public%2Fabudhabi-trip.html">Share link</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel" style="margin-top:16px;">
+      <h2>Research sources</h2>
+      <div class="body sources-list">
+        <div class="source">
+          <h3>Abu Dhabi family and desert ideas</h3>
+          <p><a class="source-link" href="https://visitabudhabi.ae/en/things-to-do/adventure/desert/desert-safari" target="_blank" rel="noopener noreferrer">Desert safari</a> · <a class="source-link" href="https://www.louvreabudhabi.ae/en/programmes/children-and-families" target="_blank" rel="noopener noreferrer">Louvre Abu Dhabi families</a> · <a class="source-link" href="https://visitabudhabi.ae/en/things-to-do/families" target="_blank" rel="noopener noreferrer">Family activities</a></p>
+        </div>
+        <div class="source">
+          <h3>Dubai side-trip planning</h3>
+          <p><a class="source-link" href="https://www.rome2rio.com/s/Abu-Dhabi/Dubai" target="_blank" rel="noopener noreferrer">Abu Dhabi ↔ Dubai travel times</a> · <a class="source-link" href="https://www.visitdubai.com/en/plan-your-trip/getting-around-dubai/taxi-and-car-rentals" target="_blank" rel="noopener noreferrer">Car rental guidance</a> · <a class="source-link" href="https://www.visitdubai.com/en/articles/unforgettable-family-holiday-in-dubai" target="_blank" rel="noopener noreferrer">Family holiday ideas</a></p>
+        </div>
+        <div class="source">
+          <h3>Hotel value checks</h3>
+          <p><a class="source-link" href="https://www.booking.com/fourstars/city/ae/abu-dhabi.html" target="_blank" rel="noopener noreferrer">Abu Dhabi 4-star list</a> · <a class="source-link" href="https://www.booking.com/family/city/ae/abu-dhabi.html" target="_blank" rel="noopener noreferrer">Family stays</a> · <a class="source-link" href="https://www.booking.com/deals" target="_blank" rel="noopener noreferrer">Deals page</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:16px;">
       <article class="panel">
         <h2>Flight details</h2>
         <div class="body">
@@ -359,12 +551,9 @@
         </div>
       </article>
       <article class="panel">
-        <h2>Quick links</h2>
+        <h2>How I’d shortlist the stay</h2>
         <div class="body">
-          <div class="actions">
-            <a class="btn btn-primary" href="./index.html">Back to index</a>
-            <a class="btn btn-secondary" href="mailto:?subject=Abu%20Dhabi%20trip&body=Open%20the%20page%3A%20https%3A%2F%2Fantoniogatti.github.io%2Fcontroltower-public%2Fabudhabi-trip.html">Share link</a>
-          </div>
+          <div class="soft-note">If the goal is cheapest possible 4-star with a good safety margin, start with Grand Villaggio or TRYP. If you want the easiest family fit, La Quinta or Southern Sun are the stronger picks. If you prefer a beach-leaning location, Oryx is the value option to compare.</div>
         </div>
       </article>
     </section>
