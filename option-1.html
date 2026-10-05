@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Option 1 · Abu Dhabi base</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root{--bg:#08101c;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);--text:#f7f8fb;--muted:#b6c0d4;--accent:#ffb86b;--accent2:#5dd6ff;--shadow:0 18px 55px rgba(0,0,0,.35)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(1000px 540px at 15% -10%, rgba(93,214,255,.18), transparent 54%),radial-gradient(900px 520px at 100% 0%, rgba(255,184,107,.16), transparent 46%),linear-gradient(180deg,#09111d 0%,#0b1422 100%);color:var(--text)}
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 40px}
+    .hero{border:1px solid var(--line);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+    .hero-top{padding:30px 28px 22px;border-bottom:1px solid var(--line)}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+    .eyebrow:before{content:'';width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 0 5px rgba(255,255,255,.04)}
+    h1{margin:10px 0 12px;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.9;letter-spacing:.02em}
+    .subtitle{max-width:920px;color:var(--muted);font-size:1.02rem;line-height:1.7;margin:0}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;font-size:.82rem;color:#eaf0ff}
+    .chip strong{color:#fff}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+    .panel{border:1px solid var(--line);border-radius:24px;background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+    .panel h2{margin:0;padding:18px 20px 16px;border-bottom:1px solid var(--line);font-size:.92rem;letter-spacing:.2em;text-transform:uppercase}
+    .body{padding:18px 20px 20px}
+    .steps,.cards{display:grid;gap:14px}
+    .card{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .day{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .when{font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);padding-top:3px}
+    h3{margin:0 0 8px;font-size:1.03rem}
+    p{margin:0;color:var(--muted);line-height:1.65}
+    ul{margin:10px 0 0;padding-left:18px;color:#e8ecff;line-height:1.6}
+    li{margin:6px 0}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .tag{font-size:.76rem;padding:5px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.16);color:#eaf0ff;background:rgba(255,255,255,.04)}
+    .btns{display:flex;flex-wrap:wrap;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:14px;text-decoration:none;font-weight:700;border:1px solid transparent;white-space:nowrap}
+    .primary{background:linear-gradient(135deg,var(--accent),#ffd8a6);color:#1d160d}.secondary{background:rgba(255,255,255,.04);color:#f4f7ff;border-color:var(--line)}
+    .price{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-weight:800;color:#fff2dc}
+    .price small{color:var(--muted);font-weight:500}
+    .hotel{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .hotel h3{margin-bottom:6px}.hotel p{margin-top:6px}
+    .muted{color:var(--muted)}
+    .soft{padding:12px 14px;border-left:3px solid var(--accent2);background:rgba(93,214,255,.08);border-radius:12px;color:#e8f6ff;line-height:1.55}
+    .footer{margin-top:16px;padding:18px 4px 4px;color:var(--muted);font-size:.86rem;text-align:center}
+    .footer a{color:#dff2ff}
+    .sources{display:grid;gap:10px}
+    .src{padding:14px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .src a{color:#dff2ff;text-decoration:none;font-weight:600}
+    .src a:hover{text-decoration:underline}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.day{grid-template-columns:1fr}}
+    @media (max-width:640px){.wrap{padding:14px}.hero-top{padding:22px 18px 18px}.body,.panel h2{padding-left:16px;padding-right:16px}}
+  </style>
+
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-top">
+        <div class="eyebrow">Abu Dhabi trip</div>
+        <h1>Option 1 · Abu Dhabi base</h1>
+        <p class="subtitle">Cheapest, easiest version: stay in Abu Dhabi, do the desert, Louvre Abu Dhabi, and Yas Island, then keep one or two low-effort buffer days for Elio.</p>
+        <div class="chips"><span class="chip"><strong>Focus</strong> lowest stress</span><span class="chip"><strong>Core</strong> desert + Louvre + Yas</span><span class="chip"><strong>Hotel</strong> best cheap 4-star</span><span class="chip"><strong>Style</strong> family-first</span></div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h2>Day-by-day plan</h2>
+        <div class="body steps"><div class="day"><div class="when">Day 1</div><div><h3>Arrival and easy night</h3><p>Land, transfer to hotel, eat nearby, and keep the first evening simple so everyone resets after the flights.</p><div class="tags"><span class="tag">airport transfer</span><span class="tag">early night</span><span class="tag">pool / dinner</span></div></div></div><div class="day"><div class="when">Day 2</div><div><h3>Louvre Abu Dhabi + Saadiyat</h3><p>Make this the main culture day: Louvre Abu Dhabi in the morning, lunch nearby, then a beach or promenade stop in the afternoon.</p><div class="tags"><span class="tag">Louvre Abu Dhabi</span><span class="tag">family museum</span><span class="tag">light walking</span></div></div></div><div class="day"><div class="when">Day 3</div><div><h3>Desert day</h3><p>Use the desert for the memorable big outing. Keep the morning free, then do a late-afternoon or evening safari so the heat and energy are lower.</p><div class="tags"><span class="tag">desert safari</span><span class="tag">sunset</span><span class="tag">one big activity</span></div></div></div><div class="day"><div class="when">Day 4</div><div><h3>Yas Island family day</h3><p>Build the fun day around Yas Island: choose one main attraction only, then stop for food and an early hotel return.</p><div class="tags"><span class="tag">Yas Island</span><span class="tag">theme park choice</span><span class="tag">short transfer</span></div></div></div><div class="day"><div class="when">Day 5</div><div><h3>Slow Abu Dhabi day</h3><p>Do Corniche, a marina walk, or a shopping-mall backup. This is the “no pressure” day that keeps the trip comfortable.</p><div class="tags"><span class="tag">Corniche</span><span class="tag">rest day</span><span class="tag">indoor backup</span></div></div></div><div class="day"><div class="when">Day 6</div><div><h3>Optional extra day</h3><p>If you still want more, repeat the easiest win: beach time, hotel pool, or a second museum / family attraction.</p><div class="tags"><span class="tag">flex day</span><span class="tag">pool</span><span class="tag">rest</span></div></div></div><div class="day"><div class="when">Day 7</div><div><h3>New Year’s Eve buffer</h3><p>Keep the final big dinner calm and do not stack anything hard before the return flights.</p><div class="tags"><span class="tag">buffer</span><span class="tag">easy dinner</span><span class="tag">pack</span></div></div></div></div>
+      </article>
+      <article class="panel">
+        <h2>Cheap hotel shortlist</h2>
+        <div class="body cards">
+          <div class="soft">Best cheap stays: Grand Villaggio from $48.52/night or TRYP by Wyndham from $53.91/night.</div>
+          <div class="hotel"><h3>Grand Villaggio Hotel Abu Dhabi</h3><div class="price">4-star · from $48.52/night</div><p>Cheapest visible 4-star pick. Good if the priority is simply to spend less.</p><p><a class="btn secondary" href="https://www.booking.com/hotel/ae/grand-villaggio.html" target="_blank" rel="noopener noreferrer">Open offer</a></p></div><div class="hotel"><h3>TRYP by Wyndham Abu Dhabi City Center</h3><div class="price">4-star · from $53.91/night</div><p>Central and still low-cost; a stronger all-round choice than the absolute cheapest.</p><p><a class="btn secondary" href="https://www.booking.com/hotel/ae/tryp-by-wyndham-abu-dhabi.html" target="_blank" rel="noopener noreferrer">Open offer</a></p></div><div class="hotel"><h3>La Quinta by Wyndham Abu Dhabi Al Wahda</h3><div class="price">4-star · from $56.78/night</div><p>Best family-value balance: mall access, parking, and indoor pool.</p><p><a class="btn secondary" href="https://www.booking.com/hotel/ae/la-quinta-by-wyndham-abu-dhabi-al-wahda.html" target="_blank" rel="noopener noreferrer">Open offer</a></p></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid" style="margin-top:16px;">
+      <article class="panel">
+        <h2>Sources I used</h2>
+        <div class="body sources"><div class="src"><a href="https://visitabudhabi.ae/en/things-to-do/adventure/desert/desert-safari" target="_blank" rel="noopener noreferrer">Desert safari</a><div class="muted">https://visitabudhabi.ae/en/things-to-do/adventure/desert/desert-safari</div></div><div class="src"><a href="https://www.louvreabudhabi.ae/en/programmes/children-and-families" target="_blank" rel="noopener noreferrer">Louvre families</a><div class="muted">https://www.louvreabudhabi.ae/en/programmes/children-and-families</div></div><div class="src"><a href="https://visitabudhabi.ae/en/where-to-go/islands/yas-lsland" target="_blank" rel="noopener noreferrer">Yas Island</a><div class="muted">https://visitabudhabi.ae/en/where-to-go/islands/yas-lsland</div></div></div>
+      </article>
+      <article class="panel">
+        <h2>Quick links</h2>
+        <div class="body">
+          <div class="btns">
+            <a class="btn primary" href="./abudhabi-trip.html">Back to Abu Dhabi hub</a>
+            <a class="btn secondary" href="./index.html">Back to index</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="footer">Openable link: <a href="https://antoniogatti.github.io/controltower-public/option-1.html">https://antoniogatti.github.io/controltower-public/option-1.html</a></div>
+  </main>
+</body>
+</html>
