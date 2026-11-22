@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Trip Gallery - Dubai & Abu Dhabi (25 Dec 2026 - 2 Jan 2027)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --primary-dark: #764ba2;
+            --accent: #ff6b6b;
+            --light-bg: #f8f9ff;
+            --dark-text: #2c3e50;
+            --gray-text: #666;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --card-hover-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .booking-ref {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out 0.1s backwards;
+        }
+
+        .trip-info {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease-out 0.2s backwards;
+        }
+
+        .trip-info-item {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .trip-info-item strong {
+            color: white;
+            font-weight: 700;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 15px;
+            animation: slideInLeft 0.8s ease-out 0.3s backwards;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .city-section {
+            margin-bottom: 80px;
+        }
+
+        .map-section {
+            background: white;
+            padding: 60px 20px;
+            margin: 60px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        #map-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #trip-map {
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .city-title {
+            font-size: 2rem;
+            margin: 50px 0 30px 0;
+            color: var(--dark-text);
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        .city-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card-image.hotel {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .card-image.attraction {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .card-image.beach {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .card-image.icon {
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-location {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .feature-tag {
+            background: var(--light-bg);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-hotel-info {
+            background: #f0f4ff;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .card-hotel-info strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .card-hotel-info p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin: 4px 0;
+        }
+
+        .card-action {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-card {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .btn-card-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-card-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-card-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-card-secondary:hover {
+            background: var(--light-bg);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 1200px;
+            height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+
+        .modal-body {
+            flex-grow: 1;
+            overflow: auto;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 60px 0;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray-text);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+        }
+
+        .footer-info {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .trip-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .city-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                height: 350px;
+                margin-bottom: 40px;
+            }
+
+            .hero-content {
+                padding: 40px 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .booking-ref {
+                display: none;
+            }
+
+            .modal-content {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="nav-brand">🌍 UAE Trip Gallery</a>
+            <ul class="nav-links">
+                <li><a href="#dubai">Dubai</a></li>
+                <li><a href="#abudhabi">Abu Dhabi</a></li>
+                <li><a href="#istanbul">Istanbul</a></li>
+                <li><a href="trip-calendar.html">📅 Calendar</a></li>
+            </ul>
+            <div class="booking-ref">Booking: VWRH8U</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore Your UAE Adventure</h1>
+            <p>A curated journey through Dubai, Abu Dhabi & Istanbul</p>
+            <div class="trip-info">
+                <div class="trip-info-item">
+                    <strong>📅 Dates:</strong> Dec 25, 2026 - Jan 2, 2027
+                </div>
+                <div class="trip-info-item">
+                    <strong>🎫 Booking:</strong> VWRH8U
+                </div>
+                <div class="trip-info-item">
+                    <strong>✈️ Duration:</strong> 9 Days
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#cities" class="btn btn-primary">📸 View Destinations</a>
+                <a href="trip-calendar.html" class="btn btn-secondary">📅 Trip Calendar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="container">
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Major Cities</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">Premium Hotels</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Must-See Attractions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Days of Adventure</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="map-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">
+                <span style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">🗺️ Your Trip Destinations</span>
+            </h2>
+            <div id="map-container" style="height: 500px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 60px;">
+                <svg id="trip-map" style="width: 100%; height: 100%; background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);"></svg>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 60px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <h3 style="color: var(--primary); margin-bottom: 8px;">Dubai</h3>
+                    <p style="color: var(--gray-text); font-size: 0.9rem;">Dec 26-28: Marina, Burj Khalifa, Mall, Beach</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <h3 style="color: #059669; margin-bottom: 8px;">Abu Dhabi</h3>
+                    <p style="color: var(--gray-text); font-size: 0.9rem;">Dec 29-31: Hotel, Mosque, Louvre, Yas Island</p>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <h3 style="color: #f59e0b; margin-bottom: 8px;">Istanbul</h3>
+                    <p style="color: var(--gray-text); font-size: 0.9rem;">Jan 1-2: Stopover, Blue Mosque, Bazaar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Gallery Section -->
+    <div class="container" id="cities">
+        <!-- DUBAI -->
+        <div class="city-section">
+            <h2 class="city-title" id="dubai">🏙️ Dubai</h2>
+            <p style="color: var(--gray-text); margin-bottom: 30px;">The jewel of the UAE - futuristic architecture, luxury shopping, and desert adventures</p>
+            
+            <div class="city-cards">
+                <!-- The First Collection Marina -->
+                <div class="card">
+                    <div class="card-image hotel">
+                        <span class="card-image icon">🏨</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Hotel</div>
+                        <div class="card-title">The First Collection Marina</div>
+                        <div class="card-description">Luxury beachfront hotel with stunning Marina views, world-class amenities, and prime location for exploring Dubai's attractions.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🏖️ Beachfront</span>
+                            <span class="feature-tag">⭐ 5-Star</span>
+                            <span class="feature-tag">🍽️ Fine Dining</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Location:</strong> Dubai Marina</p>
+                            <p><strong>Amenities:</strong> Pool, Spa, Beach Access, Fine Dining</p>
+                            <p><strong>Rating:</strong> 4.8/5 ⭐</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Burj Khalifa -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🌆</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Attraction</div>
+                        <div class="card-title">Burj Khalifa</div>
+                        <div class="card-description">The world's tallest building offering breathtaking panoramic views of Dubai from the observation decks. An iconic must-visit destination.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🎟️ Ticketed</span>
+                            <span class="feature-tag">📸 Photography</span>
+                            <span class="feature-tag">🌃 Night View</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Height:</strong> 828 meters</p>
+                            <p><strong>Hours:</strong> 8:00 AM - 11:30 PM</p>
+                            <p><strong>Duration:</strong> 2-3 hours</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dubai Mall -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🛍️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Shopping</div>
+                        <div class="card-title">Dubai Mall</div>
+                        <div class="card-description">World's largest shopping mall with 1,200+ stores, dining options, and entertainment. Home to the Aquarium and fountain shows.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🏬 Shopping</span>
+                            <span class="feature-tag">🍴 Dining</span>
+                            <span class="feature-tag">🎪 Entertainment</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Size:</strong> 500,000+ sq meters</p>
+                            <p><strong>Hours:</strong> 10:00 AM - 11:00 PM</p>
+                            <p><strong>Must-See:</strong> Aquarium & Fountain</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jumeirah Beach -->
+                <div class="card">
+                    <div class="card-image beach">
+                        <span class="card-image icon">🏖️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Beach</div>
+                        <div class="card-title">Jumeirah Beach</div>
+                        <div class="card-description">Pristine public beaches with golden sand, crystal-clear waters, and luxury resorts. Perfect for swimming, sunbathing, and water sports.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🏊 Swimming</span>
+                            <span class="feature-tag">☀️ Sunbathing</span>
+                            <span class="feature-tag">🏄 Water Sports</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Beach Type:</strong> Public</p>
+                            <p><strong>Best Time:</strong> Early Morning & Sunset</p>
+                            <p><strong>Facilities:</strong> Lifeguards, Showers, Restaurants</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dubai Desert Safari -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🏜️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Adventure</div>
+                        <div class="card-title">Dubai Desert Safari</div>
+                        <div class="card-description">Thrilling desert adventure with dune bashing, camel rides, and traditional Bedouin camp experience with BBQ dinner and entertainment.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🐪 Camel Ride</span>
+                            <span class="feature-tag">🎪 Entertainment</span>
+                            <span class="feature-tag">🍖 BBQ Dinner</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Duration:</strong> 4-5 hours</p>
+                            <p><strong>Time:</strong> Morning or Evening</p>
+                            <p><strong>Included:</strong> Transport, Activities, Dinner</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Palm Jumeirah -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🌴</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Icon</div>
+                        <div class="card-title">Palm Jumeirah</div>
+                        <div class="card-description">Iconic artificial palm-shaped island featuring luxury resorts, residences, and beach clubs. Best viewed from aerial tours or water sports.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🛥️ Yacht Tour</span>
+                            <span class="feature-tag">🏖️ Beach Clubs</span>
+                            <span class="feature-tag">🤿 Diving</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Size:</strong> 5.5 km in circumference</p>
+                            <p><strong>Best View:</strong> From sea or helicopter</p>
+                            <p><strong>Activities:</strong> Yacht tours, Water sports</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABU DHABI -->
+        <div class="city-section">
+            <h2 class="city-title" id="abudhabi">🕌 Abu Dhabi</h2>
+            <p style="color: var(--gray-text); margin-bottom: 30px;">The capital's cultural treasures - world-class museums, religious landmarks, and serene coastal beauty</p>
+            
+            <div class="city-cards">
+                <!-- Le Royal Méridien -->
+                <div class="card">
+                    <div class="card-image hotel">
+                        <span class="card-image icon">🏨</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Hotel</div>
+                        <div class="card-title">Le Royal Méridien Abu Dhabi</div>
+                        <div class="card-description">Elegant 5-star hotel with beachfront location, lush gardens, and world-class facilities. Perfect base for exploring Abu Dhabi's attractions.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🏖️ Beachfront</span>
+                            <span class="feature-tag">⭐ 5-Star</span>
+                            <span class="feature-tag">🌳 Gardens</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Location:</strong> Al Marjan Island</p>
+                            <p><strong>Amenities:</strong> Beach, Pool, Spa, Multiple Restaurants</p>
+                            <p><strong>Rating:</strong> 4.7/5 ⭐</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sheikh Zayed Grand Mosque -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🕌</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Cultural</div>
+                        <div class="card-title">Sheikh Zayed Grand Mosque</div>
+                        <div class="card-description">Magnificent white marble mosque, one of the largest in the world. Showcases stunning Islamic architecture and welcomes visitors of all faiths.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">📸 Photography</span>
+                            <span class="feature-tag">🎓 Educational</span>
+                            <span class="feature-tag">✨ Iconic</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Style:</strong> Islamic Architecture</p>
+                            <p><strong>Hours:</strong> 9:00 AM - 5:00 PM (Closed Prayer Times)</p>
+                            <p><strong>Dress:</strong> Modest (Provided at Entrance)</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Louvre Abu Dhabi -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🎨</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Museum</div>
+                        <div class="card-title">Louvre Abu Dhabi</div>
+                        <div class="card-description">World-class art museum on Saadiyat Island featuring masterpieces from around the globe. Stunning architecture with iconic dome.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🎨 Art</span>
+                            <span class="feature-tag">🏛️ Culture</span>
+                            <span class="feature-tag">🎟️ Exhibitions</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Collection:</strong> 600+ Artworks</p>
+                            <p><strong>Hours:</strong> 10:00 AM - 6:00 PM</p>
+                            <p><strong>Duration:</strong> 3-4 hours minimum</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yas Island -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🎢</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Entertainment</div>
+                        <div class="card-title">Yas Island</div>
+                        <div class="card-description">Premier entertainment destination with Ferrari World, Yas Waterworld, shopping malls, and pristine beaches for a full day of fun.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🎪 Theme Parks</span>
+                            <span class="feature-tag">🏊 Water Park</span>
+                            <span class="feature-tag">🛍️ Shopping</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Attractions:</strong> Ferrari World, Waterworld, Mall</p>
+                            <p><strong>Best Time:</strong> Early Morning or Evening</p>
+                            <p><strong>Duration:</strong> Full Day</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corniche Beach -->
+                <div class="card">
+                    <div class="card-image beach">
+                        <span class="card-image icon">🌊</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Beach</div>
+                        <div class="card-title">Abu Dhabi Corniche</div>
+                        <div class="card-description">Beautiful waterfront promenade with pristine beach, public parks, and recreational facilities. Ideal for evening walks and sunset views.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🚶 Walking Path</span>
+                            <span class="feature-tag">🌅 Sunset</span>
+                            <span class="feature-tag">👨‍👩‍👧‍👦 Family</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Length:</strong> 8 km</p>
+                            <p><strong>Best Time:</strong> Sunset (5:00-6:00 PM)</p>
+                            <p><strong>Facilities:</strong> Restaurants, Cafes, Playgrounds</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Al Qolayah Mangroves -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🌳</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Nature</div>
+                        <div class="card-title">Al Qolayah Mangroves</div>
+                        <div class="card-description">Serene mangrove forests offering kayaking tours, bird watching, and peaceful nature exploration. A hidden gem away from the city hustle.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🛶 Kayaking</span>
+                            <span class="feature-tag">🐦 Birdwatching</span>
+                            <span class="feature-tag">🌿 Nature</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Activity:</strong> Kayaking Tours</p>
+                            <p><strong>Duration:</strong> 1.5-2 hours</p>
+                            <p><strong>Best Time:</strong> Early Morning</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ISTANBUL -->
+        <div class="city-section">
+            <h2 class="city-title" id="istanbul">🌉 Istanbul</h2>
+            <p style="color: var(--gray-text); margin-bottom: 30px;">Where East meets West - historic mosques, bustling bazaars, and the majestic Bosphorus</p>
+            
+            <div class="city-cards">
+                <!-- Ramada Plaza Istanbul -->
+                <div class="card">
+                    <div class="card-image hotel">
+                        <span class="card-image icon">🏨</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Hotel</div>
+                        <div class="card-title">Ramada Plaza by Wyndham Istanbul</div>
+                        <div class="card-description">Modern 4-star hotel offering comfort and convenience in Istanbul's heart. Close to major attractions and transportation hubs.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">⭐ 4-Star</span>
+                            <span class="feature-tag">🚆 Central</span>
+                            <span class="feature-tag">🍽️ Restaurant</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Location:</strong> Sultanahmet</p>
+                            <p><strong>Amenities:</strong> Restaurant, Bar, Fitness Center</p>
+                            <p><strong>Rating:</strong> 4.5/5 ⭐</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blue Mosque -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🕌</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Historical</div>
+                        <div class="card-title">Sultan Ahmed Mosque (Blue Mosque)</div>
+                        <div class="card-description">Iconic 17th-century Ottoman mosque famous for its blue tiles and six minarets. A masterpiece of Islamic architecture and UNESCO World Heritage site.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">📸 Photography</span>
+                            <span class="feature-tag">🎓 Historical</span>
+                            <span class="feature-tag">✨ UNESCO</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Built:</strong> 1609-1616</p>
+                            <p><strong>Hours:</strong> 8:30 AM - 11:30 AM, 1:00 PM - 4:30 PM (Free Entry)</p>
+                            <p><strong>Must-See:</strong> Blue Tile Interior</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bosphorus Cruise -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🛥️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Experience</div>
+                        <div class="card-title">Bosphorus Strait Cruise</div>
+                        <div class="card-description">Scenic cruise through the Bosphorus Strait separating Europe and Asia. Witness historic palaces, fortresses, and stunning waterfront views.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🌅 Scenic</span>
+                            <span class="feature-tag">📸 Photography</span>
+                            <span class="feature-tag">🍽️ Dining</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Duration:</strong> 1.5-2 hours</p>
+                            <p><strong>Schedule:</strong> Multiple daily departures</p>
+                            <p><strong>Options:</strong> Day/Sunset/Dinner Cruises</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grand Bazaar -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🏬</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Shopping</div>
+                        <div class="card-title">Grand Bazaar (Kapali Çarşı)</div>
+                        <div class="card-description">Historic covered market with 4,000+ shops selling carpets, spices, jewelry, and souvenirs. A vibrant sensory experience and cultural icon.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🛍️ Shopping</span>
+                            <span class="feature-tag">🏛️ Historic</span>
+                            <span class="feature-tag">🤝 Bargaining</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Size:</strong> 60+ km of paths</p>
+                            <p><strong>Hours:</strong> 8:30 AM - 7:00 PM (Closed Sundays)</p>
+                            <p><strong>Must-Buy:</strong> Carpets, Spices, Turkish Delight</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hagia Sophia -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">⛪</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Historical</div>
+                        <div class="card-title">Hagia Sophia</div>
+                        <div class="card-description">Ancient Byzantine cathedral, later Ottoman mosque, now museum. Its massive dome and intricate mosaics represent architectural brilliance across centuries.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🏛️ UNESCO</span>
+                            <span class="feature-tag">📸 Iconic</span>
+                            <span class="feature-tag">🎓 Historical</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Built:</strong> 537 AD</p>
+                            <p><strong>Hours:</strong> 9:00 AM - 7:00 PM</p>
+                            <p><strong>Must-See:</strong> Central Dome, Mosaics</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spice Bazaar -->
+                <div class="card">
+                    <div class="card-image attraction">
+                        <span class="card-image icon">🌶️</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-location">Market</div>
+                        <div class="card-title">Spice Bazaar (Mısır Çarşısı)</div>
+                        <div class="card-description">Aromatic market famous for exotic spices, dried fruits, Turkish delights, and local products. A must-visit for authentic Turkish flavors.</div>
+                        <div class="card-features">
+                            <span class="feature-tag">🌶️ Spices</span>
+                            <span class="feature-tag">🍯 Foods</span>
+                            <span class="feature-tag">🎁 Souvenirs</span>
+                        </div>
+                        <div class="card-hotel-info">
+                            <p><strong>Items:</strong> 100+ Types of Spices</p>
+                            <p><strong>Hours:</strong> 8:00 AM - 7:30 PM</p>
+                            <p><strong>Perfect For:</strong> Gifts & Souvenirs</p>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn-card btn-card-primary open-calendar">View Calendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#cities">📸 Destinations</a>
+            <a href="trip-calendar.html">📅 Trip Calendar</a>
+            <a href="trip-calendar.html">📋 Activities</a>
+        </div>
+        <div>
+            <strong>Booking Reference:</strong> VWRH8U<br>
+            <strong>Trip Dates:</strong> December 25, 2026 - January 2, 2027
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2026 UAE Trip - Your Personal Travel Companion</p>
+            <p>Built with ❤️ for an unforgettable adventure</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Calendar -->
+    <div class="modal" id="calendarModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Trip Planning Calendar</h2>
+                <button class="close-btn" onclick="closeCalendar()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe src="trip-calendar.html"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle calendar button clicks
+        document.querySelectorAll('.open-calendar').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modal = document.getElementById('calendarModal');
+                modal.classList.add('active');
+            });
+        });
+
+        // Close modal when clicking close button
+        function closeCalendar() {
+            const modal = document.getElementById('calendarModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('calendarModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('calendarModal')) {
+                closeCalendar();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCalendar();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Draw Trip Map with SVG
+        function drawTripMap() {
+            const svg = document.getElementById('trip-map');
+            const container = document.getElementById('map-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+            
+            // Define cities with rough coordinates (normalized to SVG space)
+            const cities = [
+                { name: 'Dubai', x: 0.65, y: 0.45, color: '#667eea', label: '🏙️ Dubai\nDec 26-28' },
+                { name: 'Abu Dhabi', x: 0.55, y: 0.52, color: '#059669', label: '🏛️ Abu Dhabi\nDec 29-31' },
+                { name: 'Istanbul', x: 0.35, y: 0.25, color: '#f59e0b', label: '🌉 Istanbul\nJan 1-2' }
+            ];
+            
+            // Draw connection lines
+            svg.innerHTML = `
+                <!-- Background map hint -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e0e0e0" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="${width}" height="${height}" fill="url(#grid)" opacity="0.1"/>
+                
+                <!-- Connection line Dubai to Abu Dhabi -->
+                <line x1="${cities[0].x * width}" y1="${cities[0].y * height}" 
+                      x2="${cities[1].x * width}" y2="${cities[1].y * height}" 
+                      stroke="#667eea" stroke-width="3" stroke-dasharray="5,5" opacity="0.6"/>
+                
+                <!-- Connection line Abu Dhabi to Istanbul -->
+                <line x1="${cities[1].x * width}" y1="${cities[1].y * height}" 
+                      x2="${cities[2].x * width}" y2="${cities[2].y * height}" 
+                      stroke="#059669" stroke-width="3" stroke-dasharray="5,5" opacity="0.6"/>
+            `;
+            
+            // Add city markers
+            cities.forEach(city => {
+                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                
+                // Circle marker
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', city.x * width);
+                circle.setAttribute('cy', city.y * height);
+                circle.setAttribute('r', '30');
+                circle.setAttribute('fill', city.color);
+                circle.setAttribute('opacity', '0.9');
+                circle.setAttribute('class', 'map-marker');
+                circle.style.cursor = 'pointer';
+                circle.style.transition = 'all 0.3s ease';
+                
+                // Add hover effect
+                circle.addEventListener('mouseover', () => {
+                    circle.setAttribute('r', '40');
+                    circle.setAttribute('opacity', '1');
+                });
+                circle.addEventListener('mouseout', () => {
+                    circle.setAttribute('r', '30');
+                    circle.setAttribute('opacity', '0.9');
+                });
+                
+                // City label
+                const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                label.setAttribute('x', city.x * width);
+                label.setAttribute('y', city.y * height + 70);
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('font-size', '14');
+                label.setAttribute('font-weight', 'bold');
+                label.setAttribute('fill', '#2c3e50');
+                label.style.pointerEvents = 'none';
+                label.textContent = city.label.split('\n')[0];
+                
+                const dateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                dateLabel.setAttribute('x', city.x * width);
+                dateLabel.setAttribute('y', city.y * height + 88);
+                dateLabel.setAttribute('text-anchor', 'middle');
+                dateLabel.setAttribute('font-size', '12');
+                dateLabel.setAttribute('fill', '#999');
+                dateLabel.style.pointerEvents = 'none';
+                dateLabel.textContent = city.label.split('\n')[1];
+                
+                // Add inner icon
+                const icon = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                icon.setAttribute('x', city.x * width);
+                icon.setAttribute('y', city.y * height + 10);
+                icon.setAttribute('text-anchor', 'middle');
+                icon.setAttribute('font-size', '20');
+                icon.style.pointerEvents = 'none';
+                icon.textContent = city.label.split('\n')[0].split(' ')[0];
+                
+                svg.appendChild(circle);
+                svg.appendChild(icon);
+                svg.appendChild(label);
+                svg.appendChild(dateLabel);
+            });
+        }
+        
+        // Draw map on page load
+        window.addEventListener('load', drawTripMap);
+        window.addEventListener('resize', drawTripMap);
+    </script>
+</body>
+</html>

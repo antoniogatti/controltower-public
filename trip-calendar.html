@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planning Calendar - Dubai & Abu Dhabi (25 Dec 2026 - 2 Jan 2027)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9ff;
+            transform: translateY(-2px);
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #ff5252;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+
+        .dot-flight {
+            background: #3b82f6;
+        }
+
+        .dot-hotel {
+            background: #10b981;
+        }
+
+        .dot-activity {
+            background: #f59e0b;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .calendar-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .day-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .day-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .day-header {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .day-date {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .day-name {
+            font-size: 0.9rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hotel-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+            word-break: break-word;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+        }
+
+        .hotel-badge.empty {
+            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+            font-style: italic;
+        }
+
+        .activities-container {
+            min-height: 100px;
+            margin-bottom: 15px;
+        }
+
+        .activity-item {
+            background: #f8f9fa;
+            border-left: 4px solid;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            cursor: grab;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            user-select: none;
+            gap: 10px;
+        }
+
+        .activity-item:active {
+            cursor: grabbing;
+            opacity: 0.8;
+        }
+
+        .activity-item.flight {
+            border-left-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .activity-item.hotel {
+            border-left-color: #10b981;
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .activity-item.activity {
+            border-left-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .activity-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .activity-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            word-break: break-word;
+        }
+
+        .activity-info {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .activity-ref {
+            font-size: 0.8rem;
+            color: #999;
+            font-family: 'Monaco', 'Courier New', monospace;
+            padding: 4px 8px;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        .activity-actions {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .activity-btn {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.08);
+            color: #333;
+            transition: all 0.2s ease;
+        }
+
+        .activity-btn:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-btn-delete {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .activity-btn-delete:hover {
+            background: rgba(255, 107, 107, 0.4);
+        }
+
+        .add-activity-btn {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            background: #fafafa;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .add-activity-btn:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+            color: #667eea;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .modal-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: flex-end;
+        }
+
+        .share-section {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .share-section h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .share-link-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .share-link {
+            flex: 1;
+            padding: 10px 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            user-select: all;
+        }
+
+        .copy-btn {
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state-text {
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .toast.success {
+            background: #10b981;
+        }
+
+        .toast.error {
+            background: #ff6b6b;
+        }
+
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .backdrop.active {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-item {
+                flex-direction: column;
+            }
+
+            .activity-actions {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>✈️ Trip Planning Calendar</h1>
+            <p>Dubai & Abu Dhabi • December 25, 2026 - January 2, 2027 (9 Days)</p>
+            <p style="font-size: 0.9rem; color: #999; margin-bottom: 15px;">Booking Reference: <strong>VWRH8U</strong></p>
+            <div class="header-controls">
+                <button class="btn btn-primary" onclick="exportToJSON()">
+                    <span>📥</span> Export Plan
+                </button>
+                <button class="btn btn-secondary" onclick="clearAllData()">
+                    <span>🔄</span> Reset
+                </button>
+                <button class="btn btn-secondary" onclick="showShareModal()">
+                    <span>🔗</span> Share
+                </button>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot dot-flight"></div>
+                <span>Flight</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-hotel"></div>
+                <span>Hotel</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot dot-activity"></div>
+                <span>Activity</span>
+            </div>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <!-- Share Modal -->
+        <div class="modal" id="shareModal">
+            <div class="modal-content">
+                <div class="modal-header">Share Trip Plan with Lucia</div>
+                <div class="share-section">
+                    <h3>Share Link (Encrypted Data)</h3>
+                    <div class="share-link-container">
+                        <input type="text" class="share-link" id="shareLink" readonly>
+                        <button class="copy-btn" onclick="copyShareLink()">Copy</button>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">
+                        Share this link with Lucia. Changes are synced in real-time via localStorage.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeShareModal()">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Modal -->
+        <div class="modal" id="activityModal">
+            <div class="modal-content">
+                <div class="modal-header" id="modalTitle">Add Activity</div>
+                <form id="activityForm">
+                    <div class="form-group">
+                        <label class="form-label">Activity Title *</label>
+                        <input type="text" class="form-input" id="activityTitle" placeholder="e.g., Flight to Istanbul" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Type *</label>
+                        <select class="form-select" id="activityType" required>
+                            <option value="">Select type...</option>
+                            <option value="flight">Flight</option>
+                            <option value="hotel">Hotel</option>
+                            <option value="activity">Activity</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Start Time</label>
+                            <input type="time" class="form-input" id="activityStart">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">End Time</label>
+                            <input type="time" class="form-input" id="activityEnd">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Details/Notes</label>
+                        <textarea class="form-textarea" id="activityDetails" placeholder="Add additional details..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Booking Reference</label>
+                        <input type="text" class="form-input" id="activityRef" placeholder="e.g., VWRH8U">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closeActivityModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Activity</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Backdrop -->
+        <div class="backdrop" id="backdrop" onclick="closeAllModals()"></div>
+    </div>
+
+    <script>
+        // Data Management
+        const STORAGE_KEY = 'tripPlannerData';
+        const DAYS = [
+            { date: '2026-12-25', name: 'Dec 25' },
+            { date: '2026-12-26', name: 'Dec 26' },
+            { date: '2026-12-27', name: 'Dec 27' },
+            { date: '2026-12-28', name: 'Dec 28' },
+            { date: '2026-12-29', name: 'Dec 29' },
+            { date: '2026-12-30', name: 'Dec 30' },
+            { date: '2026-12-31', name: 'Dec 31' },
+            { date: '2027-01-01', name: 'Jan 1' },
+            { date: '2027-01-02', name: 'Jan 2' }
+        ];
+
+        let currentEditingActivity = null;
+        let currentEditingDay = null;
+        let tripData = loadData();
+
+        // Pre-populated activities
+        const prePopulatedActivities = {
+            '2026-12-25': [
+                {
+                    id: 'act_1',
+                    title: 'Flight TK1446',
+                    type: 'flight',
+                    start: '09:30',
+                    end: '13:40',
+                    details: 'Bari (BRI) → Istanbul (IST)',
+                    reference: 'VWRH8U'
+                },
+                {
+                    id: 'act_2',
+                    title: 'Flight TK868',
+                    type: 'flight',
+                    start: '20:00',
+                    end: '01:30',
+                    details: 'Istanbul (IST) → Abu Dhabi (AUH)',
+                    reference: 'VWRH8U'
+                }
+            ],
+            '2026-12-26': [
+                {
+                    id: 'act_3',
+                    title: 'The First Collection Marina Dubai',
+                    type: 'hotel',
+                    start: '14:50',
+                    end: '12:00',
+                    details: 'Check-in at luxury hotel on the marina',
+                    reference: 'VWRH8U'
+                }
+            ],
+            '2026-12-27': [
+                {
+                    id: 'act_4',
+                    title: 'Desert Safari (Overnight)',
+                    type: 'activity',
+                    start: '15:00',
+                    end: '06:00',
+                    details: 'Dune bashing, dinner, camel ride, overnight camp',
+                    reference: 'VWRH8U'
+                }
+            ],
+            '2026-12-30': [
+                {
+                    id: 'act_5',
+                    title: 'Le Royal Méridien Abu Dhabi',
+                    type: 'hotel',
+                    start: '14:00',
+                    end: '11:00',
+                    details: 'Check-in at beachfront hotel',
+                    reference: 'VWRH8U'
+                }
+            ],
+            '2027-01-01': [
+                {
+                    id: 'act_6',
+                    title: 'Flight TK867',
+                    type: 'flight',
+                    start: '07:40',
+                    end: '11:50',
+                    details: 'Abu Dhabi (AUH) → Istanbul (IST)',
+                    reference: 'VWRH8U'
+                },
+                {
+                    id: 'act_7',
+                    title: 'Ramada Plaza by Wyndham Istanbul',
+                    type: 'hotel',
+                    start: '14:50',
+                    end: '04:25',
+                    details: 'Stopover hotel in Istanbul',
+                    reference: 'VWRH8U'
+                }
+            ],
+            '2027-01-02': [
+                {
+                    id: 'act_8',
+                    title: 'Flight TK1445',
+                    type: 'flight',
+                    start: '08:25',
+                    end: '08:30',
+                    details: 'Istanbul (IST) → Bari (BRI)',
+                    reference: 'VWRH8U'
+                }
+            ]
+        };
+
+        // Hotel stays mapping
+        const hotelStays = {
+            '2026-12-25': { name: 'Flight Day (Traveling)', color: '#3b82f6' },
+            '2026-12-26': { name: '🏨 The First Collection Marina Dubai', color: '#10b981', url: 'https://www.marriott.com' },
+            '2026-12-27': { name: '🏨 The First Collection Marina Dubai', color: '#10b981', url: 'https://www.marriott.com' },
+            '2026-12-28': { name: '🏨 The First Collection Marina Dubai', color: '#10b981', url: 'https://www.marriott.com' },
+            '2026-12-29': { name: '🏨 Le Royal Méridien Abu Dhabi', color: '#059669', url: 'https://www.marriottbonvoy.com' },
+            '2026-12-30': { name: '🏨 Le Royal Méridien Abu Dhabi', color: '#059669', url: 'https://www.marriottbonvoy.com' },
+            '2026-12-31': { name: '🏨 Le Royal Méridien Abu Dhabi', color: '#059669', url: 'https://www.marriottbonvoy.com' },
+            '2027-01-01': { name: '🏨 Ramada Plaza by Wyndham Istanbul', color: '#f59e0b', url: 'https://www.wyndhamhotels.com' },
+            '2027-01-02': { name: 'Flight Day (Traveling)', color: '#3b82f6' }
+        };
+
+        function getHotelForDay(dateStr) {
+            return hotelStays[dateStr] || null;
+        }
+
+        // Initialize with pre-populated data if empty
+        function initializeData() {
+            if (Object.keys(tripData).length === 0) {
+                tripData = JSON.parse(JSON.stringify(prePopulatedActivities));
+                saveData();
+            }
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            return saved ? JSON.parse(saved) : {};
+        }
+
+        function saveData() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tripData));
+            showToast('Changes saved', 'success');
+        }
+
+        function getDayActivities(dateStr) {
+            return tripData[dateStr] || [];
+        }
+
+        function addActivity(dateStr, activity) {
+            if (!tripData[dateStr]) {
+                tripData[dateStr] = [];
+            }
+            tripData[dateStr].push(activity);
+            saveData();
+        }
+
+        function updateActivity(dateStr, activityId, updates) {
+            const activities = tripData[dateStr] || [];
+            const activity = activities.find(a => a.id === activityId);
+            if (activity) {
+                Object.assign(activity, updates);
+                saveData();
+            }
+        }
+
+        function deleteActivity(dateStr, activityId) {
+            if (tripData[dateStr]) {
+                tripData[dateStr] = tripData[dateStr].filter(a => a.id !== activityId);
+                saveData();
+            }
+        }
+
+        // UI Functions
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+
+            DAYS.forEach(day => {
+                const card = document.createElement('div');
+                card.className = 'day-card';
+                const hotel = getHotelForDay(day.date);
+                const hotelHtml = hotel ? `
+                    <div class="hotel-badge" style="background: linear-gradient(135deg, ${hotel.color} 0%, ${hotel.color}dd 100%);">
+                        ${hotel.name}
+                    </div>
+                ` : '';
+                
+                card.innerHTML = `
+                    <div class="day-header">
+                        <div class="day-date">${day.name}</div>
+                        <div class="day-name">${new Date(day.date).toLocaleDateString('en-US', { weekday: 'long' })}</div>
+                        ${hotelHtml}
+                    </div>
+                    <div class="activities-container" id="activities-${day.date}">
+                    </div>
+                    <button class="add-activity-btn" onclick="openActivityModal('${day.date}')">
+                        + Add Activity
+                    </button>
+                `;
+                grid.appendChild(card);
+                renderActivities(day.date);
+            });
+        }
+
+        function renderActivities(dateStr) {
+            const container = document.getElementById(`activities-${dateStr}`);
+            const activities = getDayActivities(dateStr);
+
+            if (activities.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-text">No activities planned</div></div>';
+                return;
+            }
+
+            container.innerHTML = activities.map(activity => `
+                <div class="activity-item ${activity.type}" draggable="true" ondragstart="handleDragStart(event, '${dateStr}', '${activity.id}')">
+                    <div class="activity-content">
+                        <div class="activity-title">${activity.title}</div>
+                        ${activity.start ? `<div class="activity-info">⏰ ${activity.start}${activity.end ? ' - ' + activity.end : ''}</div>` : ''}
+                        ${activity.details ? `<div class="activity-info">${activity.details}</div>` : ''}
+                        ${activity.reference ? `<span class="activity-ref">#${activity.reference}</span>` : ''}
+                    </div>
+                    <div class="activity-actions">
+                        <button class="activity-btn" onclick="editActivity('${dateStr}', '${activity.id}')" title="Edit">✏️</button>
+                        <button class="activity-btn activity-btn-delete" onclick="deleteActivityConfirm('${dateStr}', '${activity.id}')" title="Delete">🗑️</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openActivityModal(dateStr) {
+            currentEditingDay = dateStr;
+            currentEditingActivity = null;
+            document.getElementById('activityForm').reset();
+            document.getElementById('modalTitle').textContent = 'Add Activity';
+            document.getElementById('activityModal').classList.add('active');
+            document.getElementById('backdrop').classList.add('active');
+            document.getElementById('activityTitle').focus();
+        }
+
+        function editActivity(dateStr, activityId) {
+            const activities = getDayActivities(dateStr);
+            const activity = activities.find(a => a.id === activityId);
+            if (!activity) return;
+
+            currentEditingDay = dateStr;
+            currentEditingActivity = { dateStr, id: activityId };
+
+            document.getElementById('modalTitle').textContent = 'Edit Activity';
+            document.getElementById('activityTitle').value = activity.title;
+            document.getElementById('activityType').value = activity.type;
+            document.getElementById('activityStart').value = activity.start || '';
+            document.getElementById('activityEnd').value = activity.end || '';
+            document.getElementById('activityDetails').value = activity.details || '';
+            document.getElementById('activityRef').value = activity.reference || '';
+
+            document.getElementById('activityModal').classList.add('active');
+            document.getElementById('backdrop').classList.add('active');
+        }
+
+        function closeActivityModal() {
+            document.getElementById('activityModal').classList.remove('active');
+            document.getElementById('backdrop').classList.remove('active');
+            currentEditingActivity = null;
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('active');
+            document.getElementById('backdrop').classList.remove('active');
+        }
+
+        function closeAllModals() {
+            document.getElementById('activityModal').classList.remove('active');
+            document.getElementById('shareModal').classList.remove('active');
+            document.getElementById('backdrop').classList.remove('active');
+        }
+
+        document.getElementById('activityForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('activityTitle').value.trim();
+            const type = document.getElementById('activityType').value;
+            const start = document.getElementById('activityStart').value;
+            const end = document.getElementById('activityEnd').value;
+            const details = document.getElementById('activityDetails').value.trim();
+            const reference = document.getElementById('activityRef').value.trim();
+
+            if (!title || !type) {
+                showToast('Please fill in all required fields', 'error');
+                return;
+            }
+
+            if (currentEditingActivity) {
+                updateActivity(currentEditingActivity.dateStr, currentEditingActivity.id, {
+                    title,
+                    type,
+                    start,
+                    end,
+                    details,
+                    reference
+                });
+                renderActivities(currentEditingActivity.dateStr);
+                showToast('Activity updated', 'success');
+            } else {
+                addActivity(currentEditingDay, {
+                    id: `act_${Date.now()}`,
+                    title,
+                    type,
+                    start,
+                    end,
+                    details,
+                    reference
+                });
+                renderActivities(currentEditingDay);
+                showToast('Activity added', 'success');
+            }
+
+            closeActivityModal();
+        });
+
+        function deleteActivityConfirm(dateStr, activityId) {
+            if (confirm('Are you sure you want to delete this activity?')) {
+                deleteActivity(dateStr, activityId);
+                renderActivities(dateStr);
+                showToast('Activity deleted', 'success');
+            }
+        }
+
+        // Drag and Drop
+        let dragSource = null;
+
+        function handleDragStart(e, dateStr, activityId) {
+            dragSource = { dateStr, activityId };
+            e.dataTransfer.effectAllowed = 'move';
+            e.target.style.opacity = '0.5';
+        }
+
+        document.addEventListener('dragend', (e) => {
+            if (e.target.classList.contains('activity-item')) {
+                e.target.style.opacity = '1';
+            }
+        });
+
+        DAYS.forEach(day => {
+            const container = document.getElementById(`activities-${day.date}`);
+            if (container) {
+                container.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                });
+
+                container.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    if (!dragSource) return;
+
+                    const sourceDate = dragSource.dateStr;
+                    const activityId = dragSource.activityId;
+
+                    if (sourceDate !== day.date) {
+                        const activities = getDayActivities(sourceDate);
+                        const activity = activities.find(a => a.id === activityId);
+                        if (activity) {
+                            deleteActivity(sourceDate, activityId);
+                            addActivity(day.date, activity);
+                            renderActivities(sourceDate);
+                            renderActivities(day.date);
+                            showToast('Activity moved', 'success');
+                        }
+                    }
+
+                    dragSource = null;
+                });
+            }
+        });
+
+        // Share functionality
+        function showShareModal() {
+            const shareData = btoa(JSON.stringify(tripData));
+            const shareUrl = `${window.location.href}#data=${shareData}`;
+            document.getElementById('shareLink').value = shareUrl;
+            document.getElementById('shareModal').classList.add('active');
+            document.getElementById('backdrop').classList.add('active');
+        }
+
+        function copyShareLink() {
+            const link = document.getElementById('shareLink');
+            link.select();
+            document.execCommand('copy');
+
+            const btn = event.target;
+            btn.textContent = '✓ Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        }
+
+        // Export functionality
+        function exportToJSON() {
+            const dataStr = JSON.stringify(tripData, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `trip-plan-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            URL.revokeObjectURL(url);
+            showToast('Plan exported as JSON', 'success');
+        }
+
+        // Clear all data
+        function clearAllData() {
+            if (confirm('Are you sure you want to reset all activities? This cannot be undone.')) {
+                tripData = {};
+                saveData();
+                renderCalendar();
+                showToast('All activities cleared', 'success');
+            }
+        }
+
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Check for shared data in URL
+        function loadSharedData() {
+            const hash = window.location.hash;
+            if (hash.startsWith('#data=')) {
+                try {
+                    const encoded = hash.substring(6);
+                    const decoded = JSON.parse(atob(encoded));
+                    tripData = decoded;
+                    saveData();
+                    showToast('Shared plan loaded successfully', 'success');
+                } catch (e) {
+                    console.error('Failed to load shared data', e);
+                    showToast('Failed to load shared plan', 'error');
+                }
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            loadSharedData();
+            initializeData();
+            renderCalendar();
+        });
+    </script>
+</body>
+</html>
